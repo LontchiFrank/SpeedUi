@@ -1,3 +1,4 @@
+import { StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeStackNavigator from "./navigator/ Navigator";
 
