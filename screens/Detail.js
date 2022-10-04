@@ -1,14 +1,26 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import feather from "@expo/vector-icons/Feather";
+import Feather from "@expo/vector-icons/Feather";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  useFonts,
+  Monsterrat_400Regular,
+  Monsterrat_600SemiBold,
+  Monsterrat_700Bold,
+} from "@expo-google-fonts/montserrat";
 
-function Detail() {
+function Detail(props) {
+  let [fontsLoaded] = useFonts({
+    Monsterrat_400Regular,
+    Monsterrat_600SemiBold,
+    Monsterrat_700Bold,
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <Feather name="chevron-left" color="#fff" size={25} />
         </TouchableOpacity>
         <Feather name="shopping-cart" color="#fff" size={25} />
@@ -18,20 +30,27 @@ function Detail() {
         <Text style={styles.title}>Franky Scooter</Text>
         <Text style={styles.subtitle}>Model S1</Text>
         <View style={styles.cont2}>
-          <Text style={{ ...styles.title, flex2, marginTop: 0 }}>Colors</Text>
+          <Text style={{ ...styles.title, flex: 2, marginTop: 0 }}>Colors</Text>
+          <View style={styles.selected}>
+            <View style={styles.c1} />
+          </View>
+          <View style={styles.c2} />
+          <View style={styles.c3} />
         </View>
-        <View style={styles.c2} />
-        <View style={styles.c3} />
-      </View>
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit amet, consectutur adipsing elit, sed do eiusmod
-        tempor inciduc
-      </Text>
-      <View>
-        <FontAwesome name="heart-o" color="#000" size={25} />
-        <TouchableOpacity onPress={() => props.navigation.navigate("Home")}>
-          <Text style={styles.btnText}>Next</Text>
-        </TouchableOpacity>
+
+        <Text style={styles.text}>
+          Lorem ipsum dolor sit amet, consectutur adipsing elit, sed do eiusmod
+          tempor inciduc
+        </Text>
+        <View style={styles.cont1}>
+          <FontAwesome name="heart-o" color="#000" size={25} />
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => props.navigation.navigate("Home")}
+          >
+            <Text style={styles.btnText}>Next</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -66,5 +85,71 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     paddingVertical: 12,
     borderRadius: 30,
+  },
+  btnText: {
+    fontFamily: "Monsterrat_600SemiBold",
+    fontSize: 20,
+    color: "#fff",
+    textAlign: "center",
+  },
+  cont1: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "space-between",
+    marginTop: 40,
+  },
+  c3: {
+    height: 20,
+    width: 20,
+    borderRadius: 15,
+    backgroundColor: "#529CC0",
+  },
+  c2: {
+    height: 20,
+    width: 20,
+    borderRadius: 15,
+    backgroundColor: "#529C47",
+    marginHorizontal: 10,
+  },
+  c1: {
+    height: 20,
+    width: 20,
+    borderRadius: 15,
+    backgroundColor: "#E24438",
+  },
+  selected: {
+    borderColor: "#E2443B",
+    height: 30,
+    width: 30,
+    borderRadius: 24,
+    borderWidth: 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  cont2: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    marginVertical: 25,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingTop: 50,
+  },
+  img: {
+    height: "45%",
+    width: "50%",
+  },
+  cont3: {
+    flex: 1,
+    backgroundColor: "#fff",
+    width: "100%",
+    borderRadius: 50,
+    paddingHorizontal: 20,
   },
 });
