@@ -8,7 +8,7 @@ import {
 } from "@expo-google-fonts/montserrat";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-function Home() {
+function Home(props) {
   let [fontsLoaded] = useFonts({
     Monsterrat_400Regular,
     Monsterrat_600SemiBold,
@@ -27,7 +27,7 @@ function Home() {
         style={styles.btn}
         onPress={() => props.navigation.navigate("Detail")}
       >
-        <Text></Text>
+        <Text style={styles.text}>Next</Text>
       </TouchableOpacity>
     </View>
   );
@@ -61,5 +61,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     lineHeight: 30,
     marginTop: 30,
+  },
+  btn: {
+    marginTop: 40,
+    backgroundColor: "#E2443B",
+    paddingHorizontal: 140,
+    paddingVertical: 15,
+    borderRadius: 30,
+  },
+  text: {
+    color: "white",
+    fontFamily: "Monsterrat_700Bold",
+    fontSize: 18,
   },
 });
